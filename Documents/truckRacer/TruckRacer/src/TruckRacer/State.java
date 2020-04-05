@@ -10,6 +10,7 @@ public class State {
 	
 	
 	public State(String name) {
+		//Add all city to the list
 		this.setStateName(name);
 		Location city1 = new Location("El Paso");
 		Location city2 = new Location("Amarillo");
@@ -39,8 +40,12 @@ public class State {
 		return locations.get(locations.size()-1);
 	}
 	public Location move(Location pos, int step) {
+		
+		// Find current location
 		int currentPos = locations.indexOf(pos);
+		// Go next to next position based on step
 		int nextPos = currentPos + step;
+		//Go back to start if the position is less than 0 else move forward
 		if(nextPos < 0 ) {
 		
 			return this.getStartLocation();
