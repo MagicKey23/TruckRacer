@@ -1,0 +1,19 @@
+package TruckRacer;
+
+public class Location {
+	private String label;
+	public Location(String location) {
+		// TODO Auto-generated constructor stub
+		this.setLabel(location);
+	}
+	public void setLabel(String location) {
+			this.label  = location;
+	}
+	public String getLabel() {
+		return label;
+	}	
+	
+	public String toString() {
+		return label;
+	}
+}

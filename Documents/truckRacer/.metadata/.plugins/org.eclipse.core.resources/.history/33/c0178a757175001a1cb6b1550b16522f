@@ -1,0 +1,53 @@
+package TruckRacer;
+import java.util.ArrayList;
+import TruckRacer.Location;
+public class State {
+	private String stateName;
+	private Location city1 = new Location("El Paso");
+	private Location city2 = new Location("Amarillo");
+	private Location city3 = new Location("Whichita Falls");
+	private Location city4 = new Location("Dallas Fort Worth");
+	private Location city5 = new Location("Houston");
+	private Location city6 = new Location("San Antonio");
+	private Location city7 = new Location("South PadreIsland");
+	private static ArrayList<Location> locations = new ArrayList<Location>() ; 
+	
+	public State(String name) {
+		// TODO Auto-generated constructor stub
+		this.setStateName(name);
+		locations.add(city1);
+		locations.add(city2);
+		locations.add(city3);
+		locations.add(city4);
+		locations.add(city5);
+		locations.add(city6);
+		locations.add(city7);
+
+	}
+	public void setStateName(String name) {
+		this.stateName = name;
+	}
+	public String getStateName() {
+		return stateName;
+	}
+	public Location getStartLocation() {
+		return locations.get(0);
+	}
+	public Location getLastLocation() {
+		return locations.get(-1);
+	}
+	public Location move(Location pos, int step) {
+		if(step < 0) {
+			return this.getStartLocation();
+		}else if(step > 6) {
+			return this.getLastLocation();
+		}
+		
+	}
+	
+	public void showState(ArrayList arr) {
+		
+	}
+	
+
+}

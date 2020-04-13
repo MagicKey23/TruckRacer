@@ -1,0 +1,46 @@
+package TruckRacer;
+import TruckRacer.Location;
+import TruckRacer.Spinner;
+import TruckRacer.State;
+public class Truck {
+	//SetUP
+	private String name;
+	private Location currentLocation;
+	
+	//-----------
+	//Constructor
+	public Truck(String name, Location label) {
+		this.setName(name);
+		this.setCurrentLocation(label);
+		
+	}
+	//----------
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setCurrentLocation(Location label) {
+		this.currentLocation = label;
+	}
+
+	public Location getCurrentlocation() {
+		return currentLocation;
+	}
+	public void takeTurn(Spinner spin, State state) {
+    	System.out.printf("%s's turn. Press Enter to Spin...\n", getName());
+		int spinVal = spin.spin();
+		currentLocation = state.move(currentLocation, spinVal);
+		
+	}
+	public boolean isLocated() {
+		return true;
+	}
+	public String toString() {
+		return this.getName() + this.getCurrentlocation().getLabel();
+	}
+	
+	
+}

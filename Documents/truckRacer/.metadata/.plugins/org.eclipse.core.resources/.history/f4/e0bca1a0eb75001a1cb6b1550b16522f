@@ -1,0 +1,33 @@
+package TruckRacer;
+
+public class Truck {
+	private String name;
+	public Truck(String name, Location label) {
+		this.setName(name);
+		this.setCurrentLocation(label);
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setCurrentLocation(Location label) {
+		
+	}
+
+	public Location getCurrentlocation() {
+		
+	}
+	public void takeTurn(Spinner spin, State val) {
+		
+	}
+	public boolean isLocated() {
+		return true;
+	}
+	public String toString() {
+		return "something";
+	}
+	
+	
+}

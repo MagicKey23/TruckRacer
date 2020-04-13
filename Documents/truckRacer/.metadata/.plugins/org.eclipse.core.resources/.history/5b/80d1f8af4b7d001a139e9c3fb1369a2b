@@ -1,0 +1,14 @@
+package TruckRacer;
+import TruckRacer.Spinner;
+import TruckRacer.State;
+
+public class coupe extends Car {
+
+	public coupe(String name, Location label) {
+		// TODO Auto-generated constructor stub
+		super(name, label);
+	}
+	public void takeTurn(Spinner spin, State label) {
+		
+	}
+}

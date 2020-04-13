@@ -1,0 +1,13 @@
+package TruckRacer;
+import TruckRacer.Location;
+import TruckRacer.Spinner;
+import TruckRacer.State;
+import java.util.Scanner;
+import TruckRacer.Car;
+public class Truck extends Car{
+	public Truck(String name, Location label) {
+		super(name,label);
+	}
+		
+	
+}

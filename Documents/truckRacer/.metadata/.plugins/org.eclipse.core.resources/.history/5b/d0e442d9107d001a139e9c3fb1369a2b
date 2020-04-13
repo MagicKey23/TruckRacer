@@ -1,0 +1,9 @@
+package TruckRacer;
+
+public class coupe {
+
+	public coupe() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

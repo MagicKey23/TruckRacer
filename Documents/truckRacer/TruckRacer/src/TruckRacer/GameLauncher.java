@@ -6,6 +6,7 @@ public class GameLauncher {
 		//Start Game
 		TruckRace game = new TruckRace();
 		game.playGame();
+		
 	}
 	
 

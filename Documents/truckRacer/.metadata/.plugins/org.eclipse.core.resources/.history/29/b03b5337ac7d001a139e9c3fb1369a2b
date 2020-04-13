@@ -1,0 +1,38 @@
+package TruckRacer;
+import TruckRacer.Spinner;
+import TruckRacer.State;
+
+import java.io.FileWriter;
+import java.util.Random;
+import java.util.Scanner;
+import TruckRacer.Location;
+public class Coupe extends Car {
+	//SET UP Attributes and Reference
+	private Location currentLocation;
+	private Scanner scan = new Scanner(System.in);
+	
+	public Coupe(String name, Location label) {
+		super(name, label);
+	}
+	public void takeTurn(Spinner spinner, State state) {
+		currentLocation = this.getCurrentlocation();
+    	System.out.printf("%s's turn. Press Enter to Spin...\n", this.getName());
+    	String keyPress = scan.nextLine();
+    	if(keyPress.isEmpty()) {
+    	//Spin 
+    	int spinVal = scan.nextInt(2);
+		System.out.printf("%s spins %d\n",this.getName(), spinVal);
+		currentLocation = state.move(currentLocation, spinVal);
+		//Winner
+		if(currentLocation == state.getLastLocation()) {
+			System.out.printf("%s is the Winner\n", this.getName());
+			this.printWinnerCertificate(this.getName());
+		}else {
+			System.out.printf("%s at %s\n", this.getName(), this.getCurrentlocation());
+		}
+		
+		
+    	}
+		
+	}
+}

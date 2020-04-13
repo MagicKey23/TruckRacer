@@ -1,0 +1,82 @@
+package TruckRacer;
+import java.util.ArrayList;
+import TruckRacer.Car;
+import TruckRacer.Location;
+public class State {
+	
+	//SET UP
+	private String stateName;
+	private ArrayList<Location> locations = new ArrayList<Location>(); 
+	
+	
+	public State(String name) {
+		//Add all city to the list
+		this.setStateName(name);
+		Location city1 = new Location("El Paso");
+		Location city2 = new Location("Amarillo");
+		Location city3 = new Location("Whichita Falls");
+		Location city4 = new Location("Dallas Fort Worth");
+		Location city5 = new Location("Houston");
+		Location city6 = new Location("San Antonio");
+		Location city7 = new Location("South PadreIsland");
+		locations.add(city1);
+		locations.add(city2);
+		locations.add(city3);
+		locations.add(city4);
+		locations.add(city5);
+		locations.add(city6);
+		locations.add(city7);
+	}
+	public void setStateName(String name) {
+		this.stateName = name;
+	}
+	public String getStateName() {
+		return stateName;
+	}
+	public Location getStartLocation() {
+		return locations.get(0);
+	}
+	public Location getLastLocation() {
+		return locations.get(locations.size()-1);
+	}
+	public Location move(Location pos, int step) {
+		
+		// Find current location
+		int currentPos = locations.indexOf(pos);
+		// Go next to next position based on step
+		int nextPos = currentPos + step;
+		//Go back to start if the position is less than 0 else move forward
+		if(nextPos < 0 ) {
+			return this.getStartLocation();
+		}else if(nextPos > 6) {
+			return this.getLastLocation();
+		}
+		//New Location
+		return locations.get(nextPos);
+		
+		
+	}
+	
+	public void showState(ArrayList<Car> theCars) {
+		String output = ("\nCURRENT LOCATION\n");
+		//OUTER LOOP
+		for(int i = 0; i < locations.size(); i++) {
+			output += String.format("\n%20s-", locations.get(i).getLabel());
+			//INNER LOOP
+			for(int x = 0; x < theCars.size(); x++) {		
+			Car aCar = theCars.get(x);
+			Location aLocation = locations.get(i);
+			System.out.printf("%s == %s\n", aLocation, aCar.getCurrentlocation());
+			if(aCar.getCurrentlocation() == aLocation) {
+				output += String.format("%-10s", aCar.getName());
+			}else {
+				output += String.format("%-10s", "");
+			}
+		}//end inner
+		}//end outer
+		System.out.println(output);
+		System.out.println();
+	}	
+	
+
+}

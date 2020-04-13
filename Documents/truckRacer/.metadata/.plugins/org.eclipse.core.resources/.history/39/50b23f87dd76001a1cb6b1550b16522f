@@ -1,0 +1,10 @@
+package TruckRacer;
+import java.util.Random;
+public class Spinner {
+	private Random rnd = new Random();
+	public int spin() {
+		int spinVal = rnd.nextInt(6)-2;;
+		return spinVal;
+	}
+}
+

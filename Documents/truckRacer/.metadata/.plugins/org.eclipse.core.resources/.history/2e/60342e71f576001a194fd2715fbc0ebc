@@ -1,0 +1,64 @@
+package TruckRacer;
+import TruckRacer.Location;
+import TruckRacer.Spinner;
+import TruckRacer.State;
+import java.util.Scanner;
+public class Truck {
+	//SetUP
+	private String name;
+	private Location currentLocation;
+	private Scanner scan = new Scanner(System.in);
+	//-----------
+	//Constructor
+	public Truck(String name, Location label) {
+		this.setName(name);
+		this.setCurrentLocation(label);
+		
+	}
+	//----------
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setCurrentLocation(Location label) {
+		this.currentLocation = label;
+	}
+
+	public Location getCurrentlocation() {
+		return currentLocation;
+	}
+	public void takeTurn(Spinner spinner, State state) {
+    	System.out.printf("%s's turn. Press Enter to Spin...\n", this.getName());
+    	String keyPress = scan.nextLine();
+    	if(keyPress.isEmpty()) {
+    		//Spin 
+    	int spinVal = spinner.spin();
+		System.out.printf("%s spins %d\n",this.getName(), spinVal);
+		currentLocation = state.move(currentLocation, spinVal);
+		if(currentLocation == state.getLastLocation()) {
+			System.out.printf("%s is the Winner\n", this.getName());
+		}else {
+			System.out.printf("%s at %s\n", this.getName(), this.getCurrentlocation());
+		}
+		
+		
+    	}
+		
+	}
+	public boolean isLocatedOn(Location pos) {
+		System.out.printf("%s %s : %s \n",this.getName(),this.getCurrentlocation(), pos);
+		if(this.getCurrentlocation() == pos) 
+		{return true;}
+		else {
+		return false;
+		}
+	}
+	public String toString() {
+		return this.getName() + this.getCurrentlocation().getLabel();
+	}
+	
+	
+}

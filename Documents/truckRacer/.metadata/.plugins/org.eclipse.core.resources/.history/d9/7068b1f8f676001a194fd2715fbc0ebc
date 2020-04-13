@@ -1,0 +1,52 @@
+package TruckRacer;
+import TruckRacer.Truck;
+import TruckRacer.State;
+import TruckRacer.Spinner;
+import java.util.ArrayList;
+import java.util.Scanner;
+import TruckRacer.Location;
+public class TruckRace {
+	//SET UP 
+	//Create state and give its a name
+	 private State theState = new State("First State");
+	 //Start Location
+	 Location startLocation = theState.getStartLocation();
+	 Truck truck;
+	 private Spinner theSpinner = new Spinner();
+	 private Scanner scan = new Scanner(System.in);
+	 private ArrayList<Truck> trucks = new ArrayList<Truck>();
+	 Location lastLocation = theState.getLastLocation(); 
+	 boolean keepPlaying = true;
+
+	public TruckRace() {
+		
+		System.out.printf("Enter the number of Truck in the game ");
+		int numTruck = scan.nextInt();
+		System.out.printf("\nThere are %d trucks compete in the game\n", numTruck);
+		// get truck's name
+		for(int i = 0; i < numTruck; i++) {
+		System.out.printf("What is the name for the truck %d? \n", i+1);
+		String truckName = scan.next();
+		truck = new Truck(truckName, startLocation);
+		trucks.add(truck);
+			}
+		}
+		
+	public void playGame() {
+		// Control Game
+		theState.showState(trucks);
+		while(keepPlaying == true) {
+			for(int i = 0; i < trucks.size(); i++) {
+				trucks.get(i).takeTurn(theSpinner, theState);
+				theState.showState(trucks);
+				if(trucks.get(i).isLocatedOn(lastLocation)) {
+					keepPlaying = false;
+					System.out.println(keepPlaying);
+					}else {keepPlaying = true;}
+
+			}
+			
+		}
+	}
+
+}

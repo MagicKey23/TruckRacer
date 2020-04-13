@@ -1,0 +1,50 @@
+package TruckRacer;
+import TruckRacer.Truck;
+import TruckRacer.State;
+import TruckRacer.Spinner;
+import java.util.ArrayList;
+import java.util.Scanner;
+import TruckRacer.Location;
+public class TruckRace {
+	
+	 State theState = new State("First State");
+	 Location startLocation = theState.getStartLocation();
+	 Spinner theSpinner;
+	 Scanner scan = new Scanner(System.in);
+	 ArrayList<Truck> trucks = new ArrayList<Truck>();
+	public TruckRace() {
+		// TODO Auto-generated constructor stub
+		
+		System.out.printf("Enter the number of Truck in the game ");
+		int numTruck = scan.nextInt();
+		}
+		System.out.printf("\nThere are %d trucks compete in the game\n", numTruck);
+		
+		
+		// get truck's name
+					for(int i = 0; i < numTruck; i++) {
+						System.out.printf("What are the name for the truck? \n");
+						String truckName = scan.nextLine();
+						Truck truck = new Truck(truckName, startLocation);
+						trucks.add(truck);
+			}
+		}
+		
+	public void playGame() {
+		// Control Game
+		Location lastLocation = theState.getLastLocation(); 
+		boolean keepPlaying = true;
+		theState.showState(trucks);
+		while(keepPlaying == true) {
+			for(int i = 0; i < trucks.size(); i++) {
+				trucks.get(i).takeTurn(theSpinner, theState);
+				theState.showState(trucks);
+				if(trucks.get(i).isLocatedOn(lastLocation))
+					keepPlaying = false;
+				else keepPlaying = true;
+			}
+			
+		}
+	}
+
+}

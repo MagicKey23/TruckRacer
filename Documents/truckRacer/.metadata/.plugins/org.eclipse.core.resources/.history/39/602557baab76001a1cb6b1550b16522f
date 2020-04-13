@@ -1,0 +1,10 @@
+package TruckRacer;
+import TruckRacer.TruckRace;
+public class GameLauncher {
+	private static TruckRace game = new TruckRace(); 
+	public static void main(String[] args) {
+	game.playGame();			
+	}
+	
+
+}

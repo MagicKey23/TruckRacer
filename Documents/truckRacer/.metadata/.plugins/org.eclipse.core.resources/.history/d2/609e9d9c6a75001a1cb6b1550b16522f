@@ -1,0 +1,16 @@
+package TruckRacer;
+
+public class State {
+	private String stateName;
+	public State(String name) {
+		// TODO Auto-generated constructor stub
+		
+	}
+	public void setStateName(String name) {
+		this.stateName = name;
+	}
+	public String getStateName() {
+		return stateName;
+	}
+
+}
